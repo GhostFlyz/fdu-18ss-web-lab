@@ -153,11 +153,7 @@
                var tb_tr = document.createElement('tr');
 
                var tr_td1 = document.createElement('td');
-               if (i == 1) {
-                  tr_td1.innerHTML = '<img class="img-thumbnail" src="images/art/tiny/116010.jpg" alt="...">';
-               } else if (i == 2) {
-                  tr_td1.innerHTML = '<img class="img-thumbnail" src="images/art/tiny/113010.jpg" alt="...">';
-               }
+               tr_td1.innerHTML = '<img class="img-thumbnail" src="images/art/tiny/' + eval('file' + i) + '"alt="...">';
                var tr_td2 = document.createElement('td');
                tr_td2.innerHTML = eval('product' + i);
                var tr_td3 = document.createElement('td');
