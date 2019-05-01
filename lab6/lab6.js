@@ -19,23 +19,23 @@ window.onload = function () {
 }
 
 var timer = null;
-var alpha = 0;
+var opacity = 0;
 
-function startMove(iTarget) {
+function startMove(Target) {
     var figcaption = document.getElementsByTagName("figcaption")[0];
-    clearInterval(timer);//防止定时器叠加
+    clearInterval(timer);
     timer = setInterval(function () {
         var speed = 0;
-        if (alpha > iTarget) {
+        if (opacity > Target) {
             speed = -4;
         } else {
             speed = 4;
         }
-        if (alpha == iTarget) {
+        if (opacity == Target) {
             clearInterval(timer);
         } else {
-            alpha += speed;
-            figcaption.style.opacity = alpha/100;
+            opacity += speed;
+            figcaption.style.opacity = opacity/100;
         }
     }, 50)
 }
