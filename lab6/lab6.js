@@ -16,6 +16,12 @@ window.onload = function () {
     figcaption.onmouseout = function () {
         startMove(0);
     }
+    imgs[1].onmouseover = function () {
+        startMove(80);
+    }
+    imgs[1].onmouseout = function () {
+        startMove(0);
+    }
 }
 
 var timer = null;
