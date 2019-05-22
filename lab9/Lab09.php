@@ -43,6 +43,9 @@ include 'travel-data.inc.php';
               //the next line is an example
               //<a href="list.php?country=Canada" role="button" class="btn btn-default"> Canada</a> 
 
+            foreach ($countries as $value){
+                echo "<a href=\"list.php?country=".$value."\" role=\"button\" class=\"btn btn-default\">".$value."</a>";
+            }
 
               ?>
                      
@@ -70,7 +73,23 @@ include 'travel-data.inc.php';
    //              		</div>
    //              	</div>
    //              </a>
-			// </li>
+            // </li>
+            
+            foreach ($images as $value){
+                echo "<li>";
+                echo "<a href=\"detail.php?id=".$value['id']."\" class=\"img-responsive\">";
+                echo "<img src=\"images/square/".$value['path']."\" alt=".$value['title'].">";
+                echo "<div class=\"caption\">";
+                echo "<div class=\"blur\">";
+                echo "</div>";
+                echo "<div class=\"caption-text\">";
+                echo "<h1>".$value['title']."</h1>";
+                echo "</div>";
+                echo "</div>";
+                echo "</a>";
+                echo "</li>";
+            }
+
           ?>
 
        </ul>       
