@@ -4,8 +4,14 @@
 //****** Hint ******
 //connect database and fetch data here
 
+$connection = new MySQLi('localhost', 'root', 'Zjt199198812', 'travel');
+if($connection->connect_error){
+  echo 'Connection error: ' . mysqli_connect_error();
+}
 
 ?>
+
+<?php include 'functions.inc.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +53,10 @@
                 //****** Hint ******
                 //display the list of continents
 
-                while($row = $result->fetch_assoc()) {
+                $sql_continents = "SELECT * FROM continents ";
+                $result_continents = $connection->query($sql_continents);
+
+                while($row = $result_continents->fetch_assoc()) {
                   echo '<option value=' . $row['ContinentCode'] . '>' . $row['ContinentName'] . '</option>';
                 }
 
@@ -61,6 +70,14 @@
 
                 //****** Hint ******
                 /* display list of countries */ 
+
+                $sql_countries = "SELECT * FROM countries ";
+                $result_countries = $connection->query($sql_countries);
+
+                while($row = $result_countries->fetch_assoc()) {
+                  echo '<option value=' . $row['ISO'] . '>' . $row['CountryName'] . '</option>';
+                }
+
                 ?>
               </select>    
               <input type="text"  placeholder="Search title" class="form-control" name=title>
@@ -90,6 +107,19 @@
               </a>
             </li>        
             */ 
+
+            if(empty($_GET["country"])){
+              $sql_imagedetails = "SELECT ImageID,Title,Path,Description FROM imagedetails";
+            }else{
+              $sql_imagedetails = "SELECT ImageID,Title,Path,Description FROM imagedetails where CountryCodeISO =" ."'". $_GET["country"] . "'";
+            }  
+
+            $result_imagedetails = $connection->query($sql_imagedetails);
+
+            while($row = $result_imagedetails->fetch_assoc()){
+              findByCountry($row['ImageID'], $row['Path'], $row['Title'], $row['Description']);
+            }
+
             ?>
        </ul>       
 
